@@ -1,0 +1,58 @@
+extra code
+
+// if(message starts with SMStretcher recognize BYTE)
+            StringBuilder stringBuilder = new StringBuilder();                     
+            	
+            
+            /* The SMS-Messages are 'hiding' within the extras of the Intent. */
+            Bundle bundle = intent.getExtras();
+            if (bundle != null) {
+         	
+                /* Get all messages contained in the Intent
+                 * Telephony.Sms.Intents.getMessagesFromIntent(intent) does not work anymore
+                 * hence the below changes
+                 */     
+            	Object[] msgObj = null;	
+
+            	//for receiving calls       	
+            	String phoneState = bundle.getString("state");
+            	String phoneNumber = bundle.getString("incoming_number");
+    			if(phoneState.equals("OFFHOOK"))   			
+        	        Toast.makeText(context, phoneNumber, Toast.LENGTH_LONG).show();
+
+            	//for receiving texts
+            	if(bundle.get("pdus") != null){
+                    msgObj = (Object[]) bundle.get("pdus");
+                    SmsMessage[] messages = new SmsMessage[msgObj.length];
+                    for(int i=0;i<msgObj.length;i++)
+                            messages[i]=SmsMessage.createFromPdu((byte[])msgObj[i]);
+                    /* Feed the StringBuilder with all Messages found. */
+                    for (SmsMessage currentMessage : messages){
+                    	/* Sender-Number */   
+                    	stringBuilder.append("SMS Received From: ");
+                        stringBuilder.append(currentMessage.getDisplayOriginatingAddress());
+                        /* Actual Message-Content */
+                        stringBuilder.append("\nMessage : ");  
+                        stringBuilder.append(currentMessage.getDisplayMessageBody());
+                    }
+                    /* Logger Debug-Output */
+                    Log.i(LOG_TAG, "[SMSApp] onReceive: " + stringBuilder);
+                    /* Show the Notification containing the Message. */
+                    Toast.makeText(context, stringBuilder.toString(), Toast.LENGTH_LONG).show();
+            	}
+
+            /* Start the Main-Activity */
+           // Intent i = new Intent(context, contactActivity.class);
+           // i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+           // context.startActivity(i);
+           
+           
+  manifest:
+  
+  	<receiver android:name=".ContactReceiver">
+	  <intent-filter>
+      	<action android:name="android.provider.Telephony.SMS_RECEIVED" />
+      	<action android:name="android.intent.action.PHONE_STATE" /> 
+      	<action android:name="android.intent.action.NEW_OUTGOING_CALL" />  	
+	  </intent-filter> 
+	</receiver>

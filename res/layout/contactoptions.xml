@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DISPLAY NAME" android:id="@+id/TextCOdisplayname"></TextView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Last Time Contacted:" android:id="@+id/TextCO1"></TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="null" android:id="@+id/TextCOlasttimecontacted"></TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="null" android:id="@+id/TextCOtimesincecontact"></TextView>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Contact Every:" android:id="@+id/TextCO4"></TextView>
+<Spinner android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/COspinner"></Spinner>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TextCO7" android:text="Time until next contact:"></TextView><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="null" android:id="@+id/TextCOtimeremaining"></TextView><Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reset Alarm For This Contact" android:id="@+id/ButtonCOreset"></Button>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content" android:orientation="vertical">
+<TextView android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Include texts in lasttimecontacted"></TextView>
+<CheckBox android:text="@+id/CheckBox01" android:id="@+id/CheckBox01" android:layout_width="wrap_content" android:layout_height="wrap_content"></CheckBox><TextView android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Time to update"></TextView>
+
+
+
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0000" android:id="@+id/AObuttonSetTime"></Button>
+
+</LinearLayout>
